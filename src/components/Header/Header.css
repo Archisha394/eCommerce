@@ -1,14 +1,29 @@
-.header{
-    background-color: var(--dark);
-   padding: 20px 30px;
-   text-align: left;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   display: flex;
-   justify-content: space-between;
-   align-items: center; 
+.header {
+  background-color: var(--dark);
+  padding: 20px 30px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.header h1{
-    margin: 0;
-    font-size: 36px;
-    color: var(--yellow);
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+  color: var(--yellow);
 }
+.yellow-button {
+  background-color: var(--yellow);
+  color: var(--dark);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px; /* Space between the product name and the button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+.buttons{
+    justify-content: space-around;
+}
+
