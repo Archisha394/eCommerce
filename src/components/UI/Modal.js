@@ -5,7 +5,7 @@ function Modal({show,onclose,children}) {
     }
     return(
         <div className="backdrop" onClick={onclose}>
-          <div className="modal">{children}</div>
+          <div className="modal" onClick={(event)=>event.stopPropagation()}>{children}</div>
         </div>
     );
     
