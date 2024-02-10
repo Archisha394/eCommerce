@@ -1,7 +1,7 @@
 import Modal from "../UI/Modal";
 import "./Cart.css";
 
-function CartItem({ id, name, image, quantity }) {
+function CartItem({ id, name, image, quantity, onIncQuantity, onDecQuantity }) {
   return (
     <div key={id} className="cart-item">
       <div className="item-img">
@@ -14,7 +14,7 @@ function CartItem({ id, name, image, quantity }) {
           <div>
             <button
               className="yellow-button qty-button qty-plus-button"
-              // onClick={() => onIncQuantity(id)}
+              onClick={() => onIncQuantity(id)}
             >
               +
             </button>
@@ -22,7 +22,7 @@ function CartItem({ id, name, image, quantity }) {
           <div>
             <button
               className="yellow-button qty-button"
-              // onClick={() => onDecQuantity(id)}
+              onClick={() => onDecQuantity(id)}
             >
               -
             </button>
@@ -32,20 +32,27 @@ function CartItem({ id, name, image, quantity }) {
     </div>
   );
 }
-function Cart({ showCart, closeCart, cartitems }) {
+function Cart({ showCart, closeCart, cartitems, onDecQuantity, onIncQuantity }) {
   return (
     <Modal show={showCart} onclose={closeCart}>
-      <div className="Cart-container">
-        <div className="Cart-heading">Cart</div>
-        {cartitems.map((item) => (
-          <CartItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            quantity={item.quantity}
-          />
-        ))}
+      <div className="cart-container">
+        <div className="cart-heading">Cart</div>
+        {cartitems.length > 0 ? (
+          cartitems.map((item) => (
+            <CartItem
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              quantity={item.quantity}
+              onDecQuantity={onDecQuantity}
+              onIncQuantity={onIncQuantity}
+
+            />
+          ))
+        ) : (
+          <div className="empty-cart"> Cart is empty </div>
+        )}
         <div className="cart-buttons">
           <button className="black-button close-cart" onClick={closeCart}>
             Close
@@ -56,7 +63,6 @@ function Cart({ showCart, closeCart, cartitems }) {
             </button>
           )}
         </div>
-
       </div>
     </Modal>
   );
